@@ -11,9 +11,9 @@ class RecipesViewset(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = Recipes.objects.all()
-        category_id = self.request.query_params.get('category_id', None)
-        if category_id is not None:
-            queryset = queryset.filter(category=category_id)
+        category = self.request.query_params.get('category', None)
+        if category is not None:
+            queryset = queryset.filter(category__name_category=category)
         return queryset
 
 

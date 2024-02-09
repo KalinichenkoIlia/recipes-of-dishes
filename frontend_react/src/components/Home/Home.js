@@ -1,15 +1,17 @@
 import  React  from "react";
 import {Link} from "react-router-dom";
+import Header from "./Header";
+import Main from "./Main";
 
 function Home(){
     return(
         <div className={'Home'}>
-            <nav className={'categories'}>
-                <Link to='categories'>Recipes</Link>
-            </nav>
+            <Header/>
+           <Main/>
         </div>
 
     )
 }
+
 
 export default Home

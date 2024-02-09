@@ -1,8 +1,6 @@
 import  React , {Component} from "react";
 import axios from "axios";
-
 import RecipeCategories from "./RecipeCategories";
-import {Link} from "react-router-dom";
 
 
 class ApiRecipes extends Component {
@@ -17,7 +15,6 @@ class ApiRecipes extends Component {
     componentDidMount() {
         this.getCategories();
     }
-
 
     getCategories() {
         axios.get('http://127.0.0.1:8000/categories/')
@@ -34,7 +31,7 @@ class ApiRecipes extends Component {
     render() {
         return (!this.state.isLoaded ? "loading..." : (
             <div>
-                <Link to='/'>Home</Link>
+
                 {
                     this.state.data.map(
                         el => (
