@@ -1,0 +1,9 @@
+html , body {
+    margin: 0;
+
+}
+
+.swagger-ui {
+    display: inline-grid;
+    justify-content: center;
+}

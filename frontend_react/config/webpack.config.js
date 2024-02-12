@@ -5,14 +5,21 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: "./src/index.js",
     output: {
-
         path: path.join(__dirname, "../dist"),
         filename: "bundle.js"
+    },
+    devServer: {
+        open: true,
+        hot:true,
+        historyApiFallback: true
+    },
+    resolve: {
+        extensions: [".js",".jsx", ".json"],
     },
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
@@ -29,7 +36,7 @@ module.exports = {
                         options: {
                             importLoaders: 1,
                             modules: {
-                                localIdentName: '[local]___[hash:base64:5]'
+                                localIdentName: '[path][name]__[local]___[hash:base64:5]'
                             }
                         }
                     }

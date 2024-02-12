@@ -1,19 +1,17 @@
 import  React , {Component} from "react";
-import { Link } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
+import style from '../../styles/RecipeCategories.module.css'
 
 class  RecipeCategories extends Component {
-
     render() {
-
         return (
             <>
-                <li>
+                <li className={style.category}>
                     <nav>
-                        <Link to={{pathname: `${this.props.category}`}}>{this.props.category}</Link>
+                        <NavLink to={{pathname: `${this.props.category}`}}>{this.props.category}</NavLink>
                     </nav>
                 </li>
             </>
-
         );
     }
 }

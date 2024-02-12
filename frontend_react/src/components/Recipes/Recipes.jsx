@@ -3,6 +3,7 @@ import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import styles from "../../styles/Recipes.module.css"
 
+
 function Recipes () {
     const {category} = useParams();
     const [recipes, setRecipes] = useState([]);
@@ -12,17 +13,12 @@ function Recipes () {
         }).catch(error => {
             console.log(error);
         })
-    },[])
-,
+    },[category])
 
-    console.log(category)
 
     return (
-        <div className={'re'}>
-
-            <Link to='/'>Home</Link>
+        <div className={'recipes'}>
             {recipes.map(recipe => <ul key={recipe.id}>
-                <img className={styles.img_recipe} src={recipe.file } alt={'img'}/>
                 <Link to={{pathname: `${recipe.id}`}}>{recipe.title}</Link>
             </ul> )}
         </div>

@@ -21,17 +21,22 @@ from rest_framework.schemas import get_schema_view
 from dishes import views
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.generic import TemplateView
 
 
 router = routers.DefaultRouter()
 router.register(r'recipes', views.RecipesViewset)
 router.register(r'categories', views.CategoryViewset)
-router.register(r'crep', views.CategoryRecipesViewset)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path("openapi", get_schema_view(title="Your Project", description="API for all things …"), name="openapi-schema",),
+    path('swagger-ui/', TemplateView.as_view(
+       template_name='swagger-ui.html',
+       extra_context={'schema_url':'openapi-schema'}
+   ), name='swagger-ui'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

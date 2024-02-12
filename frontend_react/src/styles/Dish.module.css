@@ -1,0 +1,17 @@
+.container {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+
+.list_item img {
+    padding-top: 20px;
+    width: 300px;
+    height: auto;
+}
+
+.list_item  {
+    display: grid;
+    grid-template-columns: auto;
+    justify-items: center;
+}

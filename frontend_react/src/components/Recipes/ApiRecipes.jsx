@@ -1,6 +1,9 @@
 import  React , {Component} from "react";
 import axios from "axios";
 import RecipeCategories from "./RecipeCategories";
+import { Outlet } from 'react-router-dom';
+import Header from "../Header";
+import style from '../../styles/ApiRecipes.module.css'
 
 
 class ApiRecipes extends Component {
@@ -11,7 +14,6 @@ class ApiRecipes extends Component {
             data: []
         };
     }
-
     componentDidMount() {
         this.getCategories();
     }
@@ -31,15 +33,25 @@ class ApiRecipes extends Component {
     render() {
         return (!this.state.isLoaded ? "loading..." : (
             <div>
+                <Header/>
+                <div className={style.block_ApiRecipes} >
+                    <ul className={style.ApiRecipes}>
+                        {
+                            this.state.data.map(
+                                el => (
+                                    <RecipeCategories key={el.id} category={el.name_category} id={el.id}/>
+                                )
+                            )
+                        }
+                    </ul>
 
-                {
-                    this.state.data.map(
-                        el => (
-                            <RecipeCategories key={el.id} category={el.name_category} id={el.id}/>
-                        )
-                    )
-                }
+                    <main className={style.container}>
+                        <Outlet />
+                    </main>
+
+                </div>
             </div>
+
         ))
 
     }
