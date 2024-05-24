@@ -31,7 +31,7 @@ class ApiRecipes extends Component {
     }
 
     render() {
-        return (!this.state.isLoaded ? "loading..." : (
+        return (
             <div>
                 <Header/>
                 <div className={style.block_ApiRecipes} >
@@ -52,7 +52,7 @@ class ApiRecipes extends Component {
                 </div>
             </div>
 
-        ))
+        )
 
     }
 }
